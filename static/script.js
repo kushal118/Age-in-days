@@ -20,7 +20,34 @@ function generateCat(){
     image.src= "http://thecatapi.com/api/images/get?format=src&type=gif&size=small" + d.getTime();
     div.appendChild(image);
 }
-    
+function rpsGame(yourChoice){
+    console.log(yourChoice)
+    var humanChoice, botChoice
+    humanChoice = yourChoice.id
+    botChoice = numberToChoice(randToRpsInt())
+    console
+    result =decideWinner(humanChoice,botChoice); //[0,1] means human lose | bot win
+    //message = finalMessage(result) // {'message': 'you won'; 'color': "green"}
+    //rpsFrontEnd(yourChoice.id,botChoice,message);
+
+}
+function randToRpsInt(){
+ return   Math.floor(Math.random()*3)
+
+}
+function numberToChoice(number){
+ return   ['rock','paper','scissor'][number];
+}
+function decideWinner(yourChoice,computerChoice){
+    var rpsDatabase = {
+        'rock': {'scissor': 1, 'rock': 0.5, 'paper':0},
+        'paper': {'scissor': 0, 'rock': 1, 'paper': 0.5},
+        'scissor':{'scissor': 0.5, 'rock': 0, 'paper':1},
+    }
+    var yourScore = rpsDatabase[yourChoice][computerChoice];
+    var computerScore = rpsDatabase[computerChoice][yourChoice];
+    return [yourScore,computerScore]
+}
 
     
     
