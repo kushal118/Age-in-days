@@ -22,13 +22,20 @@ function generateCat(){
 }
 function rpsGame(yourChoice){
     console.log(yourChoice)
+    
     var humanChoice, botChoice
     humanChoice = yourChoice.id
+    
     botChoice = numberToChoice(randToRpsInt())
-    console
-    result =decideWinner(humanChoice,botChoice); //[0,1] means human lose | bot win
-    //message = finalMessage(result) // {'message': 'you won'; 'color': "green"}
-    //rpsFrontEnd(yourChoice.id,botChoice,message);
+    console.log('computer choice:', botChoice)
+    
+    result =decideWinner(humanChoice,botChoice);
+    console.log(result) //[0,1] means human lose | bot win
+    
+    message = finalMessage(result) // {'message': 'you won'; 'color': "green"}
+    console.log(message);
+    
+    rpsFrontEnd(yourChoice.id,botChoice,message);
 
 }
 function randToRpsInt(){
@@ -48,6 +55,32 @@ function decideWinner(yourChoice,computerChoice){
     var computerScore = rpsDatabase[computerChoice][yourChoice];
     return [yourScore,computerScore]
 }
+function finalMessage([yourScore, computerScore]){
+    if(yourScore=== 0){
+        return {'message': 'you lost', 'color': 'red'};}
+    else if(yourScore=== 0.5){
+        return {'message': 'tied', 'color': 'blue'};}
+    else{
+        return {'message': 'you win', 'color': 'green'};}
+
+}
+function rpsFrontEnd(yourImageChoice,botImageChoice,finalMessage){
+    var imageDatabase ={
+        'rock': document.getElementById('rock').src,
+        'paper': document.getElementById('paper').src,
+        'scissor': document.getElementById('scissor').src,
+
+    }
+    //lets remove the pictures
+     document.getElementById('rock').remove()
+     document.getElementById('paper').remove()
+     document.getElementById('scissor').remove()
+
+
+
+
+}
+
 
     
     
