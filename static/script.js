@@ -59,12 +59,12 @@ function finalMessage([yourScore, computerScore]){
     if(yourScore=== 0){
         return {'message': 'you lost', 'color': 'red'};}
     else if(yourScore=== 0.5){
-        return {'message': 'tied', 'color': 'blue'};}
+        return {'message': 'you tied', 'color': 'blue'};}
     else{
         return {'message': 'you win', 'color': 'green'};}
 
 }
-function rpsFrontEnd(humanImageChoice,botImageChoice,finalMessage){
+function rpsFrontEnd(humanImageChoice, botImageChoice, finalMessage){
     var imageDatabase ={
         'rock': document.getElementById('rock').src,
         'paper': document.getElementById('paper').src,
@@ -81,10 +81,17 @@ function rpsFrontEnd(humanImageChoice,botImageChoice,finalMessage){
      var botDiv = document.createElement('div');
      var messageDiv = document.createElement('div');
 
-     humanDiv.innerHTML = "<img ='"+imageDatabase[humanImageChoice] +"' height=150 width=150 style= box-shadow: 0px 10px 30px blue ;'>"
+     humanDiv.innerHTML = "<img src='"+ imageDatabase[humanImageChoice] +"' height=150 width=150 style= 'box-shadow: 0px 10px 50px rgba(35,50,233,1) ;'>"
+     messageDiv.innerHTML = "<h1 style = 'color : "+ finalMessage['color'] +"; font-size = 60px padding= 30px;'>" +finalMessage['message'] + "</h1>"
+     botDiv.innerHTML = "<img src='"+ imageDatabase[botImageChoice] +"' height=150 width=150 style= 'box-shadow: 0px 10px 30px rgba(243,38,24,1) ;'>"
 
 
 document.getElementById('flex-box-rps-div').appendChild(humanDiv);
+document.getElementById('flex-box-rps-div').appendChild(messageDiv);
+document.getElementById('flex-box-rps-div').appendChild(botDiv);
+
+
+
 
 
 }
