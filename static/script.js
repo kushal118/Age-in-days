@@ -64,7 +64,7 @@ function finalMessage([yourScore, computerScore]){
         return {'message': 'you win', 'color': 'green'};}
 
 }
-function rpsFrontEnd(yourImageChoice,botImageChoice,finalMessage){
+function rpsFrontEnd(humanImageChoice,botImageChoice,finalMessage){
     var imageDatabase ={
         'rock': document.getElementById('rock').src,
         'paper': document.getElementById('paper').src,
@@ -75,8 +75,16 @@ function rpsFrontEnd(yourImageChoice,botImageChoice,finalMessage){
      document.getElementById('rock').remove()
      document.getElementById('paper').remove()
      document.getElementById('scissor').remove()
+      
+
+     var humanDiv = document.createElement('div');
+     var botDiv = document.createElement('div');
+     var messageDiv = document.createElement('div');
+
+     humanDiv.innerHTML = "<img ='"+imageDatabase[humanImageChoice] +"' height=150 width=150 style= box-shadow: 0px 10px 30px blue ;'>"
 
 
+document.getElementById('flex-box-rps-div').appendChild(humanDiv);
 
 
 }
